@@ -25,49 +25,61 @@ The project also uses the following technologies for the database:
 
 The PostgreSQL Docker image used in the project can be found on Docker Hub: [PostgreSQL Docker Hub](https://hub.docker.com/_/postgres)
 
+
 ## ⚙️ Running Instructions
 
 1.  Clone the repository to your local machine:
-
+   
     ```
     git clone https://github.com/adamcharusta/angular-strapi-web-business-card.git
     ```
-
-3.  Navigate to the project directory:
+    
+2.  Navigate to the project directory:
 
     ```
     cd angular-strapi-web-business-card
     ```
-
-5.  Copy the `.env.example` file to `.env` and customize the environment variable values for the Strapi project:
-
+    
+3.  Copy the `.env.example` file to `.env` and customize the environment variable values for the Strapi project:
+    
     ```
     cp strapi/.env.example strapi/.env
-    ```
-
+    ``` 
+    
     You can also customize the environment variable values for the Angular project if needed.
-
-7.  Run the project using Docker Compose for the development environment with live reloading:
-
+    
+4.  Run the project using Docker Compose for the development environment with live reloading:
+    
     ```
     docker-compose -f docker-compose.dev.yml up -d
-    ```
-
+    ``` 
+    
     The project will be launched in Docker containers in development mode with live reloading for the Angular project.
-
-    The Angular application will be accessible at `http://localhost:4200`, and the Strapi CMS at `http://localhost:1337`.
-
-9.  (Optional) If you want to run the project in production mode, use the following command:
-
+    
+    -   To access the interactive console for the `strapi_dev` container, use the following command:
+        
+        ```
+        docker exec -it strapi_dev sh
+        ``` 
+        
+    -   To access the interactive console for the `gui_dev` container, use the following command:
+        
+        ```
+        docker exec -it gui_dev sh
+        ``` 
+        
+    
+    The Angular application will be accessible at [http://localhost:4200](http://localhost:4200/), and the Strapi CMS at [http://localhost:1337](http://localhost:1337/).
+    
+5.  (Optional) If you want to run the project in production mode, use the following command:
+    
     ```
     docker-compose up -d
-    ```
-
+    ``` 
+    
     The project will be launched in Docker containers in production mode.
-
-    The Angular application will be accessible at `http://localhost:8080`, and the Strapi CMS at `http://localhost:1337`.
-
-
-----------
+    
+    The Angular application will be accessible at [http://localhost:8080](http://localhost:8080/), and the Strapi CMS at [http://localhost:1337](http://localhost:1337/).
+    
 
 Please make sure you have Docker and Docker Compose installed before running the project.

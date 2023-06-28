@@ -10,6 +10,21 @@ Before running the project, make sure you have the following tools installed:
 -   Docker
 -   Docker Compose
 
+## Technologies Used
+
+The project utilizes the following technologies:
+
+-   **Angular**: A popular JavaScript framework for building web applications. [Angular Documentation](https://angular.io/)
+-   **Strapi**: An open-source headless CMS (Content Management System) for managing and delivering content. [Strapi Documentation](https://strapi.io/documentation/developer-docs/latest/getting-started/introduction.html)
+
+The project also uses the following technologies for the database:
+
+-   **PostgreSQL**: An open-source relational database management system. [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+-   **Docker**: A platform for containerizing applications. [Docker Documentation](https://docs.docker.com/)
+-   **Docker Compose**: A tool for defining and running multi-container Docker applications. [Docker Compose Documentation](https://docs.docker.com/compose/)
+
+The PostgreSQL Docker image used in the project can be found on Docker Hub: [PostgreSQL Docker Hub](https://hub.docker.com/_/postgres)
+
 ## Running Instructions
 
 1.  Clone the repository to your local machine:

@@ -4,6 +4,7 @@ services:
   postgres:
     restart: unless-stopped
     image: postgres:15.3-alpine3.18
+    container_name: postgres_dev
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -15,12 +16,13 @@ services:
     networks:
       - db
     volumes:
-      - pgData:${POSTGRES_PGDATA}
-#      - ./.data:${POSTGRES_PGDATA} # for devs
+      - ./.data:${POSTGRES_PGDATA}
   strapi:
     build:
       context: ./strapi
+      dockerfile: Dockerfile.dev
     image: strapi:latest
+    container_name: strapi_dev
     restart: unless-stopped
     ports:
       - ${STRAPI_PORT}:${STRAPI_PORT}
@@ -37,6 +39,13 @@ services:
       API_TOKEN_SALT: ${STRAPI_API_TOKEN_SALT}
       NODE_ENV: ${STRAPI_NODE_ENV}
       PORT: ${STRAPI_PORT}
+    volumes:
+      - ./strapi/config:/opt/app/config
+      - ./strapi/src:/opt/app/src
+      - ./strapi/package.json:/opt/package.json
+      - ./strapi/yarn.lock:/opt/yarn.lock
+      - ./strapi/.env:/opt/app/.env
+      - ./strapi/public/uploads:/opt/app/public/uploads
     networks:
       - db
       - api
@@ -45,12 +54,17 @@ services:
   gui:
     build:
       context: ./gui
+      dockerfile: Dockerfile.dev
       args:
         - NODE_ENV=${GUI_NODE_ENV}
+        - PORT=${GUI_PORT}
+    container_name: gui_dev
     image: gui:latest
     restart: unless-stopped
     ports:
-      - ${GUI_PORT}:80
+      - ${GUI_PORT}:${GUI_PORT}
+    volumes:
+      - ./gui:/usr/local/app
     networks:
       - api
     depends_on:
@@ -61,6 +75,3 @@ networks:
     driver: bridge
   api:
     driver: bridge
-
-volumes:
-  pgData:

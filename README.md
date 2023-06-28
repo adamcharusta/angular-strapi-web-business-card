@@ -1,16 +1,16 @@
 
-# Angular Strapi Web Business Card
+# 🚀 Angular Strapi Web Business Card
 
 This application is an example of an online business card built with Angular framework and Strapi CMS platform. It allows for creating, editing, and displaying online business cards.
 
-## System Requirements
+## 📚 System Requirements
 
 Before running the project, make sure you have the following tools installed:
 
 -   Docker
 -   Docker Compose
 
-## Technologies Used
+## 📚 Technologies Used
 
 The project utilizes the following technologies:
 
@@ -25,33 +25,43 @@ The project also uses the following technologies for the database:
 
 The PostgreSQL Docker image used in the project can be found on Docker Hub: [PostgreSQL Docker Hub](https://hub.docker.com/_/postgres)
 
-## Running Instructions
+## ⚙️ Running Instructions
 
 1.  Clone the repository to your local machine:
 
-    `git clone https://github.com/adamcharusta/angular-strapi-web-business-card.git`
+    ```
+    git clone https://github.com/adamcharusta/angular-strapi-web-business-card.git
+    ```
 
-2.  Navigate to the project directory:
+3.  Navigate to the project directory:
 
-    `cd angular-strapi-web-business-card`
+    ```
+    cd angular-strapi-web-business-card
+    ```
 
-3.  Copy the `.env.example` file to `.env` and customize the environment variable values for the Strapi project:
+5.  Copy the `.env.example` file to `.env` and customize the environment variable values for the Strapi project:
 
-    `cp strapi/.env.example strapi/.env`
+    ```
+    cp strapi/.env.example strapi/.env
+    ```
 
     You can also customize the environment variable values for the Angular project if needed.
 
-4.  Run the project using Docker Compose for the development environment with live reloading:
+7.  Run the project using Docker Compose for the development environment with live reloading:
 
-    `docker-compose -f docker-compose.dev.yml up -d`
+    ```
+    docker-compose -f docker-compose.dev.yml up -d
+    ```
 
     The project will be launched in Docker containers in development mode with live reloading for the Angular project.
 
     The Angular application will be accessible at `http://localhost:4200`, and the Strapi CMS at `http://localhost:1337`.
 
-5.  (Optional) If you want to run the project in production mode, use the following command:
+9.  (Optional) If you want to run the project in production mode, use the following command:
 
-    `docker-compose up -d`
+    ```
+    docker-compose up -d
+    ```
 
     The project will be launched in Docker containers in production mode.
 

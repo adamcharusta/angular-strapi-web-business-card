@@ -22,4 +22,4 @@ RUN ["yarn", "build"]
 
 EXPOSE $PORT
 
-CMD /opt/app/wait-for-it.sh -t 0 $DATABASE_HOST:$DATABASE_PORT -- yarn develop
+CMD /opt/app/wait-for-it.sh -t 0 $DATABASE_HOST:$DATABASE_PORT -- yarn cs import --yes && yarn develop

@@ -4,15 +4,15 @@ WORKDIR /opt/app
 COPY package.json yarn.lock ./
 
 RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev wget
-RUN wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -P /opt/app/
-RUN chmod +x /opt/app/wait-for-it.sh
+RUN wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -P /opt/scripts/
+RUN chmod +x /opt/scripts/wait-for-it.sh
 
 RUN yarn install
 
-COPY --chown=node:node . .
+COPY . .
 
 RUN ["yarn", "build"]
 
 EXPOSE $PORT
 
-CMD /opt/app/wait-for-it.sh -t 0 $DATABASE_HOST:$DATABASE_PORT -- yarn develop
+CMD /opt/scripts/wait-for-it.sh -t 0 $DATABASE_HOST:$DATABASE_PORT -- yarn cs import --yes && yarn develop

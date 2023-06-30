@@ -6,7 +6,7 @@ WORKDIR /opt/app
 
 USER node
 
-COPY package.json yarn.lock ./
+COPY package.json ./
 
 USER root
 RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev wget
@@ -14,12 +14,12 @@ RUN wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for
 RUN chmod +x /opt/app/wait-for-it.sh
 USER node
 
-RUN yarn install --frozen-lockfile --production
+RUN yarn install --production
 
 COPY --chown=node:node . .
 
 RUN ["yarn", "build"]
 
-EXPOSE $PORT
+EXPOSE 1337
 
 CMD /opt/app/wait-for-it.sh -t 0 $DATABASE_HOST:$DATABASE_PORT -- yarn cs import --yes && yarn develop

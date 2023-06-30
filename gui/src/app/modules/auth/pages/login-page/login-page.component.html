@@ -1,0 +1,49 @@
+<ng-container *transloco="let t">
+  <h1 class="text-center text-white">{{ t('auth.site_title') | ucwords }}</h1>
+  <p-card [header]="t('auth.sign_in') | ucfirst">
+    <div class="flex flex-column gap-2">
+      <form
+        class="flex flex-column gap-4"
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()">
+        <div class="flex flex-column gap-2">
+          <label htmlFor="identifier">{{ t('auth.username') | ucfirst }}</label>
+          <input
+            pInputText
+            id="identifier"
+            autocomplete="username"
+            class="p-inputtext-lg"
+            [formControl]="loginForm.controls.identifier" />
+        </div>
+        <div class="flex flex-column gap-2">
+          <div class="flex justify-content-between">
+            <label htmlFor="password">{{ t('auth.password') | ucfirst }}</label>
+            <p-button
+              [label]="t('auth.forgot_password_question') | ucfirst"
+              styleClass="p-button-link p-button-sm m-0 p-0"></p-button>
+          </div>
+          <p-password
+            id="password"
+            styleClass="w-full"
+            inputStyleClass="w-full p-inputtext-lg"
+            [toggleMask]="true"
+            [feedback]="false"
+            [formControl]="loginForm.controls.password" />
+        </div>
+        <p-button
+          [label]="t('auth.sign_in') | ucfirst"
+          type="submit"
+          styleClass="p-button-lg w-full"
+          [disabled]="!loginForm.valid"></p-button>
+      </form>
+      <p-divider></p-divider>
+      <div class="w-full text-center">
+        {{ t('auth.new_user_question') | ucfirst }}
+        <p-button
+          [label]="t('auth.create_an_account') | ucfirst"
+          type="submit"
+          styleClass="p-button-link w-full p-0 m-0"></p-button>
+      </div>
+    </div>
+  </p-card>
+</ng-container>

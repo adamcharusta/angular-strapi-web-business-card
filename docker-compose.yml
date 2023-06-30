@@ -23,7 +23,7 @@ services:
     image: strapi:latest
     restart: unless-stopped
     ports:
-      - ${STRAPI_PORT}:${STRAPI_PORT}
+      - ${STRAPI_PORT}:1337
     environment:
       DATABASE_CLIENT: postgres
       DATABASE_HOST: postgres
@@ -36,7 +36,6 @@ services:
       APP_KEYS: ${STRAPI_APP_KEYS}
       API_TOKEN_SALT: ${STRAPI_API_TOKEN_SALT}
       NODE_ENV: ${STRAPI_NODE_ENV}
-      PORT: ${STRAPI_PORT}
     networks:
       - db
       - api

@@ -11,7 +11,7 @@ RUN yarn global add @angular/cli
 ARG PORT
 ENV PORT=$PORT
 
-COPY package.json yarn.lock ./
+COPY package.json ./
 RUN yarn install
 COPY . .
 EXPOSE $PORT
